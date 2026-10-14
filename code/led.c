@@ -1,4 +1,4 @@
-#include "key.h"
+#include "led.h"
 #include "zf_common_headfile.h"
 
 #define LED_Left_1 		(D1 )//从左数第一个LED
@@ -6,8 +6,8 @@
 #define LED_Left_3 		(A12)
 #define LED_Left_4 		(A11)
 
-#define PIT_CH                  (TIM2_PIT )                                      // 使用的周期中断编号 如果修改 需要同步对应修改周期中断编号与 isr.c 中的调用
-#define PIT_PRIORITY            (TIM2_IRQn)                                      // 对应周期中断的中断编号
+#define LED_CH                  (TIM2_PIT )                                      // 使用的周期中断编号 如果修改 需要同步对应修改周期中断编号与 isr.c 中的调用
+#define LED_PRIORITY            (TIM2_IRQn)                                      // 对应周期中断的中断编号
 
 
 void LED_Init(void)
@@ -17,9 +17,8 @@ void LED_Init(void)
     gpio_init(LED_Left_3, GPO, 0, GPO_PUSH_PULL);
     gpio_init(LED_Left_4, GPO, 0, GPO_PUSH_PULL);
 
-    pit_ms_init(PIT_CH, 1000);                                                  // 初始化 PIT_CH0 为周期中断 1000ms 周期
-
-    interrupt_set_priority(PIT_PRIORITY, 0);                                    // 设置 PIT1 对周期中断的中断优先级为 0
+    pit_ms_init(LED_CH, 1000);                                                  // 初始化 PIT_CH0 为周期中断 1000ms 周期
+    interrupt_set_priority(LED_PRIORITY, 0);                                    // 设置 PIT1 对周期中断的中断优先级为 0
 
 }
 
@@ -34,6 +33,6 @@ void pit_handler (void)
     gpio_toggle_level(LED_Left_1);
     gpio_toggle_level(LED_Left_2);
     gpio_toggle_level(LED_Left_3);
-    gpio_toggle_level(LED_Left_4);                                                                  // 周期中断触发 标志位置位
+    gpio_toggle_level(LED_Left_4);                                         // 周期中断触发 
 }
 

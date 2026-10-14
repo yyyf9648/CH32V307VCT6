@@ -35,6 +35,7 @@
 #include "zf_common_headfile.h"
 #include "key.h"
 #include "led.h"
+#include "menu.h"
 // *************************** 例程测试说明 ***************************
 // 1.核心板烧录完成本例程，完成上电
 //
@@ -44,7 +45,7 @@
 
 
 extern int KEY_Flag;
-
+int KEY_Num_last=7;
 int main(void)
 {
     clock_init(SYSTEM_CLOCK_120M);      // 初始化芯片时钟 工作频率为 120MHz
@@ -54,35 +55,32 @@ int main(void)
     tft180_init();
     tft180_full(RGB565_BLACK);
     tft180_set_color(RGB565_WHITE,RGB565_BLACK);
-    tft180_show_int(0,0,9648,6);
+    // tft180_show_int(0,0,9648,6);
     
-    LED_Init();
+ 
     // pwm_init(PWM_CH1, 2000, 50);                                                // 初始化 PWM 通道 频率 2KHz 初始占空比 50%
 
 
     // 此处编写用户代码 例如外设初始化代码等
     KEY_Init();
+    MENU_Init();
+    LED_Init();
 
     while(1)
     {
-        if(KEY_Flag==1)
-        {
-            KEY_Show_num();
-            KEY_Flag=0;
-        }
-        // gpio_set_level(LED_Left_2, 1);
-        // gpio_set_level(LED_Left_1, 0);                
-        // system_delay_ms(100);
-        // gpio_set_level(LED_Left_3, 1);
-        // gpio_set_level(LED_Left_2, 0); 
-        // system_delay_ms(100);
-        // gpio_set_level(LED_Left_4, 1);
-        // gpio_set_level(LED_Left_3, 0); 
-        // system_delay_ms(100);
-        // gpio_set_level(LED_Left_1, 1);
-        // gpio_set_level(LED_Left_4, 0); 
-        // system_delay_ms(100);
-        
+        // KEY_Num_last=KEY_Get_num();
+        tft180_show_int(0,0,KEY_Num_last,2);
+        // if(KEY_Num_last==7)
+        // {
+            if(KEY_Flag==2)//检测到按键变化
+            {
+                //tft180_clear();
+                //tft180_show_int(0,16,KEY_Num,2);//tft屏显示按键读值
+                MENU_Refresh();            
+                KEY_Flag=0;
+                //KEY_Num_last=KEY_Num;
+            }
+        // }   
     }
 }
 

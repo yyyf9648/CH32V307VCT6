@@ -83,7 +83,8 @@ user_c/main.o: \
  d:/MRS_Projectt/CHV307_Library/Example/libraries/zf_components/seekfree_assistant.h \
  d:/MRS_Projectt/CHV307_Library/Example/libraries/zf_components/seekfree_assistant_interface.h \
  d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/key.h \
- d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/user/src/led.h
+ d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/user/src/led.h \
+ d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/menu.h
 
 d:/MRS_Projectt/CHV307_Library/Example/libraries/zf_common/zf_common_headfile.h:
 
@@ -252,3 +253,5 @@ d:/MRS_Projectt/CHV307_Library/Example/libraries/zf_components/seekfree_assistan
 d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/key.h:
 
 d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/user/src/led.h:
+
+d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/menu.h:

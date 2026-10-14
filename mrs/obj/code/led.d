@@ -1,6 +1,6 @@
 code/led.o: \
  d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/led.c \
- d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/key.h \
+ d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/led.h \
  d:/MRS_Projectt/CHV307_Library/Example/libraries/zf_common/zf_common_headfile.h \
  d:/MRS_Projectt/CHV307_Library/Example/libraries/sdk/Peripheral/ch32v30x_adc.h \
  d:/MRS_Projectt/CHV307_Library/Example/libraries/sdk/Peripheral/ch32v30x.h \
@@ -84,7 +84,7 @@ code/led.o: \
  d:/MRS_Projectt/CHV307_Library/Example/libraries/zf_components/seekfree_assistant.h \
  d:/MRS_Projectt/CHV307_Library/Example/libraries/zf_components/seekfree_assistant_interface.h
 
-d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/key.h:
+d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/led.h:
 
 d:/MRS_Projectt/CHV307_Library/Example/libraries/zf_common/zf_common_headfile.h:
 

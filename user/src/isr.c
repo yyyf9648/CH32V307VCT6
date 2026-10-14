@@ -336,7 +336,7 @@ void TIM6_IRQHandler(void)
     {
        
        TIM_ClearITPendingBit(TIM6, TIM_IT_Update );
-       
+       key_timer_handler();
     }
 }
 
