@@ -83,7 +83,8 @@ code/menu.o: \
  d:/MRS_Projectt/CHV307_Library/Example/libraries/zf_device/zf_device_ble6a20.h \
  d:/MRS_Projectt/CHV307_Library/Example/libraries/zf_components/seekfree_assistant.h \
  d:/MRS_Projectt/CHV307_Library/Example/libraries/zf_components/seekfree_assistant_interface.h \
- d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/key.h
+ d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/key.h \
+ d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/led.h
 
 d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/menu.h:
 
@@ -252,3 +253,5 @@ d:/MRS_Projectt/CHV307_Library/Example/libraries/zf_components/seekfree_assistan
 d:/MRS_Projectt/CHV307_Library/Example/libraries/zf_components/seekfree_assistant_interface.h:
 
 d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/key.h:
+
+d:/MRS_Projectt/CHV307_Library/Example/smart_car_round_01/code/led.h:

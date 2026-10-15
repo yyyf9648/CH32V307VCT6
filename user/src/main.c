@@ -34,8 +34,9 @@
 ********************************************************************************************************************/
 #include "zf_common_headfile.h"
 #include "key.h"
-#include "led.h"
+
 #include "menu.h"
+#include "led.h"
 // *************************** 例程测试说明 ***************************
 // 1.核心板烧录完成本例程，完成上电
 //
@@ -65,16 +66,16 @@ int main(void)
     KEY_Init();
     MENU_Init();
     LED_Init();
-
+    pit_disable(LED_CH);
     while(1)
     {
         // KEY_Num_last=KEY_Get_num();
-        tft180_show_int(0,0,KEY_Num_last,2);
+        tft180_show_int(0,0,KEY_Get_num(),2);
         // if(KEY_Num_last==7)
         // {
             if(KEY_Flag==2)//检测到按键变化
             {
-                //tft180_clear();
+                tft180_clear();
                 //tft180_show_int(0,16,KEY_Num,2);//tft屏显示按键读值
                 MENU_Refresh();            
                 KEY_Flag=0;

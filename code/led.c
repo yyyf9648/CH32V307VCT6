@@ -1,14 +1,21 @@
 #include "led.h"
 #include "zf_common_headfile.h"
 
-#define LED_Left_1 		(D1 )//从左数第一个LED
-#define LED_Left_2 		(A15)
-#define LED_Left_3 		(A12)
-#define LED_Left_4 		(A11)
 
-#define LED_CH                  (TIM2_PIT )                                      // 使用的周期中断编号 如果修改 需要同步对应修改周期中断编号与 isr.c 中的调用
-#define LED_PRIORITY            (TIM2_IRQn)                                      // 对应周期中断的中断编号
+void LED_On(void)
+{
+    pit_enable(LED_CH);
+}
 
+
+void LED_Off(void)
+{
+    gpio_set_level(LED_Left_1,0);
+    gpio_set_level(LED_Left_2,0);
+    gpio_set_level(LED_Left_3,0);
+    gpio_set_level(LED_Left_4,0);
+    pit_disable(LED_CH);
+}
 
 void LED_Init(void)
 {

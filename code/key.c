@@ -56,9 +56,12 @@ void KEY_Init(void)
     interrupt_set_priority(KEY_A1_EXTI, (1<<5) | 2);                             // 设置 KEY3 对应外部中断的中断抢占优先级0，子优先级1
     interrupt_set_priority(KEY_A2_EXTI, (1<<5) | 3);                             // 设置 KEY4 对应外部中断的中断抢占优先级0，子优先级1
 
-    pit_ms_init(KEY_CH, 50);                                                    // 初始化  为周期中断 10ms 周期
-    interrupt_set_priority(KEY_PRIORITY, 1);                                    // 设置 PIT1 对周期中断的中断优先级为 0
-    pit_disable(KEY_CH);                                   
+    pit_ms_init(KEY_CH, 100);                                                    // 初始化  为周期中断 10ms 周期
+    interrupt_set_priority(KEY_PRIORITY, 1);                                    // 设置 消抖 对周期中断的中断优先级为 1
+    pit_disable(KEY_CH);
+    timer_stop(KEY_TIM);
+    timer_clear(KEY_TIM);
+                                  
 }
 
 //-------------------------------------------------------------------------------------------------------------------
@@ -129,7 +132,7 @@ void key_timer_handler(void)
     {
         KEY_Flag=0;
     }
-    timer_stop(KEY_TIM);
-    timer_clear(KEY_TIM);
     pit_disable(KEY_CH);                                   
+    timer_stop(KEY_TIM);
+    timer_clear(KEY_TIM);                                   
 }
