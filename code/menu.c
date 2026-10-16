@@ -2,6 +2,7 @@
 #include "zf_common_headfile.h"
 #include "key.h"
 #include "led.h"
+#include "buzzer.h"
 int             menu_level = 0;
 int             menu_index = 0;
 int         menu_index_max = 3;//光标最多到第4行
@@ -13,17 +14,23 @@ int             menu_task     = 0;
 
 void MENU_Func(void)
 {
-    if (menu_level1_n==1&&menu_level2_n==1&&menu_index==0) {
+    if (menu_level1_n==1&&menu_level2_n==1&&menu_index==0) {//on
         LED_On();
     }
-    if (menu_level1_n==1&&menu_level2_n==1&&menu_index==1) {
+    if (menu_level1_n==1&&menu_level2_n==1&&menu_index==1) {//off
         LED_Off();
     }
-    if (menu_level1_n==1&&menu_level2_n==1&&menu_index==2) {
+    if (menu_level1_n==1&&menu_level2_n==1&&menu_index==2) {//start TIM
         LED_TIM_On();
     }
-    if (menu_level1_n==1&&menu_level2_n==1&&menu_index==3) {
+    if (menu_level1_n==1&&menu_level2_n==1&&menu_index==3) {//close TIM
         LED_TIM_Off();
+    }
+    if (menu_level1_n==1&&menu_level2_n==2&&menu_index==0) {//start music1
+        BUZZER_On();
+    }
+    if (menu_level1_n==1&&menu_level2_n==2&&menu_index==2) {//stop
+        BUZZER_Off();
     }
 }
 

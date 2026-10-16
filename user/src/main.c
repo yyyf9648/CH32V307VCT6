@@ -38,6 +38,7 @@
 #include "menu.h"
 #include "led.h"
 #include "flash_app.h"
+#include "buzzer.h"
 // *************************** 例程测试说明 ***************************
 // 1.核心板烧录完成本例程，完成上电
 //
@@ -56,10 +57,10 @@ int main(void)
     // 此处编写用户代码 例如外设初始化代码等    
  
     // pwm_init(PWM_CH1, 2000, 50);                                                // 初始化 PWM 通道 频率 2KHz 初始占空比 50%
-    MENU_Set_Init();
+    MENU_Set_Init();//菜单画面背景设置和初始化
     // 此处编写用户代码 例如外设初始化代码等
     KEY_Init();
-    
+    BUZZER_Init();
     LED_Init();
     menu_data_load();//先加载数据再初始化菜单
     MENU_Init();
