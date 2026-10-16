@@ -33,10 +33,11 @@
 * 2022-09-15        大W            first version
 ********************************************************************************************************************/
 #include "zf_common_headfile.h"
-#include "key.h"
 
+#include "key.h"
 #include "menu.h"
 #include "led.h"
+#include "flash_app.h"
 // *************************** 例程测试说明 ***************************
 // 1.核心板烧录完成本例程，完成上电
 //
@@ -46,42 +47,32 @@
 
 
 extern int KEY_Flag;
-int KEY_Num_last=7;
+
 int main(void)
 {
     clock_init(SYSTEM_CLOCK_120M);      // 初始化芯片时钟 工作频率为 120MHz
     debug_init();                       // 务必保留，本函数用于初始化MPU 时钟 调试串口
 
-    // 此处编写用户代码 例如外设初始化代码等
-    tft180_init();
-    tft180_full(RGB565_BLACK);
-    tft180_set_color(RGB565_WHITE,RGB565_BLACK);
-    // tft180_show_int(0,0,9648,6);
-    
+    // 此处编写用户代码 例如外设初始化代码等    
  
     // pwm_init(PWM_CH1, 2000, 50);                                                // 初始化 PWM 通道 频率 2KHz 初始占空比 50%
-
-
+    MENU_Set_Init();
     // 此处编写用户代码 例如外设初始化代码等
     KEY_Init();
-    MENU_Init();
+    
     LED_Init();
-    pit_disable(LED_CH);
+    menu_data_load();//先加载数据再初始化菜单
+    MENU_Init();
     while(1)
     {
-        // KEY_Num_last=KEY_Get_num();
         tft180_show_int(0,0,KEY_Get_num(),2);
-        // if(KEY_Num_last==7)
-        // {
             if(KEY_Flag==2)//检测到按键变化
             {
                 tft180_clear();
-                //tft180_show_int(0,16,KEY_Num,2);//tft屏显示按键读值
-                MENU_Refresh();            
+                MENU_Refresh();
+                menu_data_save();           
                 KEY_Flag=0;
-                //KEY_Num_last=KEY_Num;
-            }
-        // }   
+            }  
     }
 }
 

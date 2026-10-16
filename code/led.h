@@ -12,6 +12,8 @@
 #define LED_PRIORITY            (TIM2_IRQn)                                      // 对应周期中断的中断编号
 void LED_On(void);
 void LED_Off(void);
+void LED_TIM_On(void);
+void LED_TIM_Off(void);
 void LED_Init(void);
 void pit_handler (void);
 
