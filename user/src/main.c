@@ -39,6 +39,7 @@
 #include "led.h"
 #include "flash_app.h"
 #include "buzzer.h"
+#include "pwm.h"
 // *************************** 例程测试说明 ***************************
 // 1.核心板烧录完成本例程，完成上电
 //
@@ -55,23 +56,22 @@ int main(void)
     debug_init();                       // 务必保留，本函数用于初始化MPU 时钟 调试串口
 
     // 此处编写用户代码 例如外设初始化代码等    
- 
-    // pwm_init(PWM_CH1, 2000, 50);                                                // 初始化 PWM 通道 频率 2KHz 初始占空比 50%
+
     MENU_Set_Init();//菜单画面背景设置和初始化
-    // 此处编写用户代码 例如外设初始化代码等
-    KEY_Init();
-    BUZZER_Init();
-    LED_Init();
-    menu_data_load();//先加载数据再初始化菜单
-    MENU_Init();
+    KEY_Init();//按键初始化
+    BUZZER_Init();//蜂鸣器初始化
+    LED_Init();//LED初始化
+    menu_data_load();//先预加载数据再初始化菜单
+    MENU_Init();//菜单初始化
     while(1)
     {
         tft180_show_int(0,0,KEY_Get_num(),2);
+        // PWM_ShowTFT();
             if(KEY_Flag==2)//检测到按键变化
             {
-                tft180_clear();
-                MENU_Refresh();
-                menu_data_save();           
+                tft180_clear();//TFT屏刷屏
+                MENU_Refresh();//菜单刷新
+                menu_data_save();//Flash保存数据   
                 KEY_Flag=0;
             }  
     }

@@ -59,7 +59,7 @@ void menu_data_load(void)
         menu_level    = (int)read_buffer[0];
         menu_level1_n = (int)read_buffer[1];
         menu_level2_n = (int)read_buffer[2];
-        tft180_show_string(0,32,"Menu data loaded");
+        tft180_show_string(0,32,"MenuData loaded");
         // printf("Menu data loaded successfully!\r\n");
     }
     else

@@ -10,12 +10,17 @@
 
 void BUZZER_Init(void)
 {
-    pwm_init(PWM_CH,262,0);
+    pwm_init(PWM_CH,0,0);//523
 }
 
-void BUZZER_On(void)
+void BUZZER_Music1_On(void)
 {
-    pwm_set_duty(PWM_CH,5000);
+    pwm_set_freq(PWM_CH,262,5000);
+}
+
+void BUZZER_Music2_On(void)
+{
+    pwm_set_freq(PWM_CH,523,5000);
 }
 
 void BUZZER_Off(void)
